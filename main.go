@@ -5,4 +5,5 @@ func main() {
   fmt.Println("go flavorings...")
   appName()
   version()
+  serve()
 }
