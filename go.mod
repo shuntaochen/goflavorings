@@ -13,6 +13,7 @@ require (
 	github.com/kataras/go-sessions/v3 v3.3.0 // indirect
 	github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51 // indirect
 	github.com/klauspost/compress v1.10.7 // indirect
+	github.com/mattn/go-sqlite3 v1.14.13 // indirect
 	github.com/ogier/pflag v0.0.1 // indirect
 	github.com/patrickmn/go-cache v2.1.0+incompatible // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
