@@ -14,6 +14,7 @@ Hints and musts:
 
 ```
 1. fileName having _, will not be included in project files, such as 'session_test.go, this has to be run by go run session_test.go
+2. reflex: reflex -r "\.go$" -s go run .
 ```
 
 TODOs:
@@ -22,4 +23,4 @@ TODOs:
 3. go jwt
 4. go json
 5. routes.go
-6. go reflex
+6. go reflex, 'go get github.com/cespare/reflex

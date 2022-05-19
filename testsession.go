@@ -12,7 +12,7 @@ type businessModel struct {
 	Name string
 }
 
-func serve() {
+func testsession() {
 	app := http.NewServeMux()
 	sess := sessions.New(sessions.Config{
 		// Cookie string, the session's client cookie name, for example: "mysessionid"
