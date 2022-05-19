@@ -1,6 +1,7 @@
 package main
 
 //user:password@tcp(localhost:5555)/dbname?tls=skip-verify&autocommit=true
+//https://zetcode.com/golang/mysql/
 
 import (
 	"database/sql"
