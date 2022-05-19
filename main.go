@@ -1,9 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"flavorings/domain"
+)
 
 func main() {
 	fmt.Println("go flavorings...")
+	x := domain.MyData{}
+	fmt.Println(x)
 	appName()
 	version()
 	mymigrate()
