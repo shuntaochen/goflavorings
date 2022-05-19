@@ -12,6 +12,7 @@ func main() {
 	fmt.Println(x)
 	appName()
 	version()
+	testmysql()
 	mymigrate()
 	testjson()
 	testtemplate()
