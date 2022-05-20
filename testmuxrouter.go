@@ -64,14 +64,14 @@ func testmux() {
 		json.NewEncoder(w).Encode(map[string]bool{"ok": true})
 	})
 
-	spa := spaHandler{staticPath: "build", indexPath: "index.html"}
+	spa := spaHandler{staticPath: "static", indexPath: "index.html"}
 	router.PathPrefix("/static").Handler(spa)
 
 	router.HandleFunc("/c", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("abc"))
 	})
 
-	var routes map[string]interface{} = map[string]interface{}{"/a": routeAHandler, "/b": routeAHandler}
+	var routes map[string]interface{} = map[string]interface{}{"/a": routeAHandler, "/b": routeBHandler}
 	for k, v := range routes {
 		mylog(k, v)
 		router.HandleFunc(k, func(w http.ResponseWriter, r *http.Request) {
@@ -103,6 +103,10 @@ func mylog(entries ...interface{}) {
 
 func routeAHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("saa"))
+}
+
+func routeBHandler(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("bbb"))
 }
 
 func testentry() {
