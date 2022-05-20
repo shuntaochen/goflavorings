@@ -91,10 +91,19 @@ func myfilter(v interface{}, w http.ResponseWriter, r *http.Request) func(w http
 
 func mylog(entries ...interface{}) {
 	for _, entry := range entries {
-		fmt.Println("%v", entry)
+		fmt.Println("v:", entry)
 	}
 }
 
 func routeAHandler(w http.ResponseWriter, r *http.Request) {
 
+}
+
+func testentry() {
+	mylog(2, 3, 4)
+	var routes map[string]interface{} = map[string]interface{}{"/a": routeAHandler, "/b": ""}
+	for k, v := range routes {
+		mylog(k, v)
+
+	}
 }
