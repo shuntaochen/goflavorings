@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -65,6 +66,10 @@ func testmux() {
 	spa := spaHandler{staticPath: "build", indexPath: "index.html"}
 	router.PathPrefix("/").Handler(spa)
 
+	var routes map[string]interface{} = map[string]interface{}{"a": "", "b": ""}
+	for k, v := range routes {
+
+	}
 	srv := &http.Server{
 		Handler: router,
 		Addr:    "127.0.0.1:8000",
@@ -74,4 +79,10 @@ func testmux() {
 	}
 
 	log.Fatal(srv.ListenAndServe())
+}
+
+func mylog(entries ...interface{}) {
+	for _, entry := range entries {
+		fmt.Println("%v", entry)
+	}
 }
