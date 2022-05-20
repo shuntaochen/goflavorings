@@ -8,6 +8,7 @@ import (
 
 func main() {
 	testentry()
+	testmux()
 	fmt.Println("go flavorings...")
 	x := domain.MyData{}
 	fmt.Println(x)

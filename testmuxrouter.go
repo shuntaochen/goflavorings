@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"reflect"
 	"time"
 
 	"github.com/gorilla/mux"
@@ -66,13 +67,18 @@ func testmux() {
 	spa := spaHandler{staticPath: "build", indexPath: "index.html"}
 	router.PathPrefix("/static").Handler(spa)
 
-	var routes map[string]interface{} = map[string]interface{}{"/a": routeAHandler, "/b": ""}
+	router.HandleFunc("/c", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("abc"))
+	})
+
+	var routes map[string]interface{} = map[string]interface{}{"/a": routeAHandler, "/b": routeAHandler}
 	for k, v := range routes {
 		mylog(k, v)
 		router.HandleFunc(k, func(w http.ResponseWriter, r *http.Request) {
 			myfilter(v, w, r)(w, r)
 		})
 	}
+	mylog("listening on 8000")
 	srv := &http.Server{
 		Handler: router,
 		Addr:    "127.0.0.1:8000",
@@ -90,13 +96,13 @@ func myfilter(v interface{}, w http.ResponseWriter, r *http.Request) func(w http
 }
 
 func mylog(entries ...interface{}) {
-	for index, entry := range entries {
-		fmt.Println("v", index, ":", entry)
+	for _, entry := range entries {
+		fmt.Println("v:", entry)
 	}
 }
 
 func routeAHandler(w http.ResponseWriter, r *http.Request) {
-
+	w.Write([]byte("saa"))
 }
 
 func testentry() {
@@ -104,6 +110,7 @@ func testentry() {
 	var routes map[string]interface{} = map[string]interface{}{"/a": routeAHandler, "/b": ""}
 	for k, v := range routes {
 		mylog(k, v)
+		mylog(reflect.TypeOf(k), reflect.TypeOf(v))
 
 	}
 }
