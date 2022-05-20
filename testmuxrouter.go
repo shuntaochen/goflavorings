@@ -64,7 +64,7 @@ func testmux() {
 	})
 
 	spa := spaHandler{staticPath: "build", indexPath: "index.html"}
-	router.PathPrefix("/").Handler(spa)
+	router.PathPrefix("/static").Handler(spa)
 
 	var routes map[string]interface{} = map[string]interface{}{"/a": routeAHandler, "/b": ""}
 	for k, v := range routes {
