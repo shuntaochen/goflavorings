@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
+	testentry()
 	fmt.Println("go flavorings...")
 	x := domain.MyData{}
 	fmt.Println(x)
