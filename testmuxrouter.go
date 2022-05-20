@@ -90,8 +90,8 @@ func myfilter(v interface{}, w http.ResponseWriter, r *http.Request) func(w http
 }
 
 func mylog(entries ...interface{}) {
-	for _, entry := range entries {
-		fmt.Println("v:", entry)
+	for index, entry := range entries {
+		fmt.Println("v", index, ":", entry)
 	}
 }
 
