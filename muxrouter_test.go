@@ -69,7 +69,9 @@ func testmux() {
 	var routes map[string]interface{} = map[string]interface{}{"/a": "", "/b": ""}
 	for k, v := range routes {
 		mylog(k, v)
-		router.HandleFunc(k, myfilter(v))
+		router.HandleFunc(k, func(w http.ResponseWriter, r *http.Request) {
+			myfilter(v, w, r)(w, r)
+		})
 	}
 	srv := &http.Server{
 		Handler: router,
@@ -82,10 +84,9 @@ func testmux() {
 	log.Fatal(srv.ListenAndServe())
 }
 
-func myfilter(v interface{}) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-
-	}
+func myfilter(v interface{}, w http.ResponseWriter, r *http.Request) func(w http.ResponseWriter, r *http.Request) {
+	//filter w,r
+	return v.(func(w http.ResponseWriter, r *http.Request))
 }
 
 func mylog(entries ...interface{}) {
