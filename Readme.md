@@ -8,6 +8,10 @@ Prerequsites:
 ```
 $ go env -w GO111MODULE=on
 $ go env -w GOPROXY=https://goproxy.cn,direct
+#delve debugging
+$ git clone https://github.com/go-delve/delve
+$ cd delve
+$ go install github.com/go-delve/delve/cmd/dlv
 ```
 
 Hints and musts:
