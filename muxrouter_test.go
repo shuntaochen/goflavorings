@@ -66,7 +66,7 @@ func testmux() {
 	spa := spaHandler{staticPath: "build", indexPath: "index.html"}
 	router.PathPrefix("/").Handler(spa)
 
-	var routes map[string]interface{} = map[string]interface{}{"/a": "", "/b": ""}
+	var routes map[string]interface{} = map[string]interface{}{"/a": routeAHandler, "/b": ""}
 	for k, v := range routes {
 		mylog(k, v)
 		router.HandleFunc(k, func(w http.ResponseWriter, r *http.Request) {
@@ -93,4 +93,8 @@ func mylog(entries ...interface{}) {
 	for _, entry := range entries {
 		fmt.Println("%v", entry)
 	}
+}
+
+func routeAHandler(w http.ResponseWriter, r *http.Request) {
+
 }
