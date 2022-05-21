@@ -56,6 +56,8 @@ func (h spaHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	http.FileServer(http.Dir(h.staticPath)).ServeHTTP(w, r)
 }
 
+var routes map[string]interface{}
+
 func testmux() {
 	router := mux.NewRouter()
 
@@ -71,12 +73,10 @@ func testmux() {
 		w.Write([]byte("abc"))
 	})
 
-	var routes map[string]interface{} = map[string]interface{}{"/a": routeAHandler, "/b": routeBHandler}
+	routes = map[string]interface{}{"/a": routeAHandler, "/b": routeBHandler}
 	for k, v := range routes {
 		mylog(k, v)
-		router.HandleFunc(k, func(w http.ResponseWriter, r *http.Request) {
-			myfilter(v, w, r)(w, r)
-		})
+		router.HandleFunc(k, defh) //v.(func(w http.ResponseWriter, r *http.Request)))
 	}
 	mylog("listening on 8000")
 	srv := &http.Server{
@@ -88,6 +88,16 @@ func testmux() {
 	}
 
 	log.Fatal(srv.ListenAndServe())
+}
+
+func defh(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path == "/a" {
+	}
+	if r.URL.Path == "/b" {
+
+	}
+	myfilter(routes[r.URL.Path], w, r)(w, r)
+
 }
 
 func myfilter(v interface{}, w http.ResponseWriter, r *http.Request) func(w http.ResponseWriter, r *http.Request) {
