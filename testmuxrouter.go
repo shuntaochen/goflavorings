@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"strings"
 	"time"
 
 	"github.com/gorilla/mux"
@@ -56,7 +57,7 @@ func (h spaHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	http.FileServer(http.Dir(h.staticPath)).ServeHTTP(w, r)
 }
 
-var routes map[string]interface{}
+var routes map[string][]interface{}
 
 func testmux() {
 	router := mux.NewRouter()
@@ -73,7 +74,7 @@ func testmux() {
 		w.Write([]byte("abc"))
 	})
 
-	routes = map[string]interface{}{"/a": routeAHandler, "/b": routeBHandler}
+	routes = map[string][]interface{}{"/a": {routeAHandler, "get"}, "/b": {routeBHandler, "get"}}
 	for k, v := range routes {
 		mylog(k, v)
 		router.HandleFunc(k, defh) //v.(func(w http.ResponseWriter, r *http.Request)))
@@ -96,7 +97,11 @@ func defh(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path == "/b" {
 
 	}
-	myfilter(routes[r.URL.Path], w, r)(w, r)
+	if routes[r.URL.Path][1] != strings.ToLower(r.Method) {
+		w.Write([]byte("Invalid http verb"))
+		return
+	}
+	myfilter(routes[r.URL.Path][0], w, r)(w, r)
 
 }
 
