@@ -20,10 +20,13 @@
                 user: 'calo', pass: '123'
             },
             login: function () {
-                console.log(22)
                 const payload = this.model
-                this.ajax(api.login, payload, function (data) {
-                    location.href = "http://baidu.com"
+                const $this = calo.model
+                this.ajax({
+                    url: '/api/health', data: payload, success: function (data) {
+                        console.log(data)
+                        $this.user = data.ok
+                    }
                 })
             }
         }
