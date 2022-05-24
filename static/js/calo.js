@@ -145,8 +145,8 @@ Privilege is hereby granted, free of use, this is an MVVM framework that I creat
     function $(id) {
         return document.getElementById(id)
     }
-    calo.makePlugin = function (id, functionPlugin, hooks) {
-        functionPlugin.call($(id), calo.model, hooks)
+    window.calo.makePlugin = function (id, functionPlugin) {
+        functionPlugin.call(calo, $(id))
         calo.run.apply(calo)
     }
 

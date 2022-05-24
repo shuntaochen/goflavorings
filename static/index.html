@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <div id="logo"></div>
     <div calo>
         <input @model="user" type="text">
         <input @model="pass" type="text">
@@ -38,7 +39,10 @@
     </script>
 
     <script>
-        loadScripts('./js/calo.js', './js/api.js')
+        loadScripts('./js/calo.js', './js/api.js', './js/caloplugins.js')
+        window.onload = function () {
+            calo.makePlugin('logo', pluginLogo)
+        }
     </script>
 </body>
 

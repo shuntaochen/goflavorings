@@ -26,8 +26,9 @@ function getHtmlOrJson(success) {
     request.open("GET", "/", true);
     request.send(null);
     request.onreadystatechange = function () {
-        if (request.readyState == 4)
+        if (request.readyState == 4) {
             console.log(request.responseText);
-        success(request.responseText)
+            success(request.responseText)
+        }
     };
 }
