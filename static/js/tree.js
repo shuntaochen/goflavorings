@@ -19,10 +19,10 @@ function doForCalo(node, nodes) {
     )
     return csh == '' ? '' : `<ul>${csh}</ul>`
 }
-let tree = doForCalo({ id: null }, nodes)
+let obj = doForCalo({ id: null }, nodes)
 const p1 = document.createElement('div')
 document.body.appendChild(p1)
-p1.innerHTML = tree
+p1.innerHTML = obj
 
 let els = document.getElementsByTagName('li');
 console.log(els);
