@@ -208,8 +208,7 @@ Privilege is hereby granted, free of use, this is an MVVM framework that I creat
         }
         xhr.onload = function () {
             if (xhr.status === 200) {
-                // success.apply(calo,JSON.parse(xhr.responseText))
-                success(JSON.parse(xhr.responseText));
+                success.call(calo, JSON.parse(xhr.responseText))
                 calo.run.apply(calo);
             } else {
                 error && error(xhr.status);
