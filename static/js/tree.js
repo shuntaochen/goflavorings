@@ -10,7 +10,7 @@ for (let index = 1; index < 5; index++) {
 }
 nodes.push({ id: 5, pid: 2, name: 'node5' })
 console.log(nodes);
-function renderChildren(node, nodes) {
+function doForCalo(node, nodes) {
     var csh = ''
     nodes.filter(n => { return n.pid == node.id }).forEach(
         c => {
@@ -19,7 +19,7 @@ function renderChildren(node, nodes) {
     )
     return csh == '' ? '' : `<ul>${csh}</ul>`
 }
-let tree = renderChildren({ id: null }, nodes)
+let tree = doForCalo({ id: null }, nodes)
 const p1 = document.createElement('div')
 document.body.appendChild(p1)
 p1.innerHTML = tree
