@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/tree.js"></script>
+    <style>
+        .main {
+            background-color: cyan;
+        }
+
+        .main>ul>li {
+            float: left;
+            margin-left: 20px;
+        }
+
+        .main>ul>li>ul {
+            position: absolute;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    Hello word
+    <div id="p1" class="main">
+        hello
+    </div>
+    <script src="./js.js"></script>
+    <script>
+        let els = document.getElementsByTagName('li');
+        console.log(els);
+        for (const el in els) {
+            els[el].onclick = function (e) {
+                e.preventDefault()
+                e.stopPropagation()
+                console.log(this.id);
+                if (this.children[0])
+                    this.children[0].style.display = this.children[0].style.display == 'none' ? '' : 'none';
+            }
+        }
+        document.getElementsByTagName('ul')[0].style.display = '';
+    </script>
+
+</body>
+
+</html>
