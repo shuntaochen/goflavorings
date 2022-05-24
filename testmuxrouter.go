@@ -101,6 +101,7 @@ func defh(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Invalid http verb"))
 		return
 	}
+	//verify jwt verity for certain routes requiring authentication,
 	myfilter(routes[r.URL.Path][0], w, r)(w, r)
 
 }
