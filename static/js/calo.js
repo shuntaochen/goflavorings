@@ -1,13 +1,14 @@
 /*
 
-License: MIT
+License: The Calo Open Source License
 Author: Shuntao Chen,
+Link: https://www.caloch.cn
 Privilege is hereby granted, free of use, this is an MVVM framework that I created, it is light enough to help a lot without any reliance on the other libraries, but please do keep all these info integrate when you use it! Any disobey will cause certain law issues, 
 
 **/
 
 (function () {
-    function renderForObject(data, scope, prefix, jsonPathPrefix) {
+    function doForCalo(data, scope, prefix, jsonPathPrefix) {
         for (const key in data) {
             if (Object.hasOwnProperty.call(data, key)) {
                 const fieldValue = data[key];
@@ -22,7 +23,7 @@ Privilege is hereby granted, free of use, this is an MVVM framework that I creat
                     const els = getElsByFieldName(scope, key)
                     els.forEach(el => {
                         el.dataset.jsonPath = jsonPathPrefix + "." + key
-                        renderForObject(fieldValue, el, "", el.dataset.jsonPath)
+                        doForCalo(fieldValue, el, "", el.dataset.jsonPath)
                     })
                 }
                 else if (isArrayType(fieldValue)) {
@@ -37,7 +38,7 @@ Privilege is hereby granted, free of use, this is an MVVM framework that I creat
                                 if (isValType(val))
                                     SetValue(el, val)
                                 else
-                                    renderForObject(val, el, fdPrefix + ".", el.dataset.jsonPath)
+                                    doForCalo(val, el, fdPrefix + ".", el.dataset.jsonPath)
                             }
                             else {
                                 clone = el.cloneNode(true)
@@ -48,7 +49,7 @@ Privilege is hereby granted, free of use, this is an MVVM framework that I creat
                                 if (isValType(val))
                                     SetValue(clone, val)
                                 else
-                                    renderForObject(val, clone, fdPrefix + ".", clone.dataset.jsonPath)
+                                    doForCalo(val, clone, fdPrefix + ".", clone.dataset.jsonPath)
                             }
                             ci++
                         });
@@ -72,7 +73,7 @@ Privilege is hereby granted, free of use, this is an MVVM framework that I creat
     var root = document.querySelector("[calo]");
     calo.run = function () {
         removePopped(root)
-        renderForObject(calo.model, root, "", "calo.model")
+        doForCalo(calo.model, root, "", "calo.model")
         var clicks = root.querySelectorAll("[\\@Click]")
         var changes = root.querySelectorAll("[\\@Change]")
         clicks.forEach(c => {
