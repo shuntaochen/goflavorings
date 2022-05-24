@@ -21,7 +21,7 @@
             },
             login: function () {
                 const payload = this.model
-                const $this = calo.model
+                const $this = this.model
                 this.ajax({
                     url: '/api/health', data: payload, success: function (data) {
                         console.log(data)
