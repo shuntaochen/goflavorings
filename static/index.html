@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./js/utils.js?33"></script>
+    <script src="./js/utils.js?23"></script>
     <title>Login</title>
 </head>
 
@@ -40,9 +40,10 @@
 
     <script>
         loadScripts('./js/calo.js', './js/api.js', './js/caloplugins.js')
-        window.onload = function () {
+        whenready(function () {
             calo.makePlugin('logo', pluginLogo)
-        }
+        })
+
     </script>
 </body>
 
