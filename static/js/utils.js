@@ -11,3 +11,7 @@ function loadScripts() {
         loadScript(el)
     }
 }
+
+function redirect(path) {
+    location.href = path
+}
