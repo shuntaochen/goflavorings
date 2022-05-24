@@ -60,7 +60,12 @@ func (h spaHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 var routes map[string][]interface{}
 
 func testmux() {
-	router := mux.NewRouter()
+	router := mux.NewRouter().StrictSlash(true)
+	staticDir := "/static/"
+
+	router.
+		PathPrefix(staticDir).
+		Handler(http.StripPrefix(staticDir, http.FileServer(http.Dir("."+staticDir))))
 
 	router.HandleFunc("/api/health", func(w http.ResponseWriter, r *http.Request) {
 		// an example API handler
@@ -68,7 +73,7 @@ func testmux() {
 	})
 
 	spa := spaHandler{staticPath: "static", indexPath: "index.html"}
-	router.PathPrefix("/static").Handler(spa)
+	router.PathPrefix("/spa").Handler(spa)
 
 	router.HandleFunc("/c", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("abc"))
