@@ -1,7 +1,8 @@
 /*
 
-License: MIT
+License: The Calo Open Source License
 Author: Shuntao Chen,
+Link: https://www.caloch.cn
 Privilege is hereby granted, free of use, this is an MVVM framework that I created, it is light enough to help a lot without any reliance on the other libraries, but please do keep all these info integrate when you use it! Any disobey will cause certain law issues, 
 
 **/
