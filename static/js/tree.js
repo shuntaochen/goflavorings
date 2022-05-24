@@ -14,15 +14,15 @@ function doForCalo(node, nodes) {
     var csh = ''
     nodes.filter(n => { return n.pid == node.id }).forEach(
         c => {
-            csh += `<li>${c.name}${renderChildren(c, nodes)}</li>`
+            csh += `<li>${c.name}${doForCalo(c, nodes)}</li>`
         }
     )
     return csh == '' ? '' : `<ul>${csh}</ul>`
 }
 let obj = doForCalo({ id: null }, nodes)
 const p1 = document.createElement('div')
-document.body.appendChild(p1)
 p1.innerHTML = obj
+document.body.appendChild(p1)
 
 let els = document.getElementsByTagName('li');
 console.log(els);
