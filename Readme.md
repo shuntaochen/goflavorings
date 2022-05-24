@@ -31,3 +31,4 @@ TODOs:
 6. go reflex, 'go get github.com/cespare/reflex
 7. go sqlite3
 8. login to get jwt token; jwt verify; permission check; data logic; cors; return json;
+9. this very often is not an spa, so, session is used in this app, rather than jwt;
