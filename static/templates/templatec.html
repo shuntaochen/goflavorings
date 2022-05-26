@@ -1,0 +1,30 @@
+<div id="logo"></div>
+<input @model="user" type="text">
+<input @model="pass" type="text">
+<button @Click="login">login</button>
+<script>
+    var calo = {
+        router: {
+            '/routeb': 'templatea.calo'
+        },
+        model: {
+            user: 'calo', pass: '123'
+        },
+        login: function () {
+            const payload = this.model
+            this.ajax({
+                url: '/api/health', data: payload, success: function (data) {
+                    console.log(data)
+                    this.model.user = data.ok
+                    if (data.ok === true) {
+                        // redirect('./main.html')
+                        this.navigate('/routeb')
+                    }
+                }
+            })
+        }
+    }
+
+    calo.makePlugin('logo', pluginLogo)
+
+</script>

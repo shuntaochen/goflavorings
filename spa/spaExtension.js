@@ -22,12 +22,14 @@
     };
     o.navigate = function (route) {
         window.history.pushState(null, null, route)
-        root.innerHTML = ''
-        var hm = stringToHTML(decodeURI(templateStore[route]))
-        var script = hm.getElementsByTagName('script')[0].text;
-        root.appendChild(hm)
-        eval(script)
-        o.run.apply(o)
+        if (root) {
+            root.innerHTML = ''
+            var hm = stringToHTML(decodeURI(templateStore[route]))
+            var script = hm.getElementsByTagName('script')[0].text;
+            root.appendChild(hm)
+            eval(script)
+            o.run.apply(o)
+        }
     }
     window.calo = o || {
         model: {}
