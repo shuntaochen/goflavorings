@@ -27,6 +27,7 @@
         var script = hm.getElementsByTagName('script')[0].text;
         root.appendChild(hm)
         eval(script)
+        o.run.apply(o)
     }
     window.calo = o || {
         model: {}
