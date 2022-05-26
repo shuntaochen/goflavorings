@@ -2,7 +2,7 @@
 
     const root = o.rootel
     o.templateStore = {}
-    o.router = o.router || { '/routea': 'templateA.html' }
+    o.router = o.router || { '/routea': 'templateA.calo' }
 
     for (const key in router) {
         if (Object.hasOwnProperty.call(router, key)) {
