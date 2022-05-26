@@ -17,6 +17,9 @@
         <button @Click="login">login</button>
         <script>
             var calo = {
+                router: {
+                    '/routeb': 'templatea.calo'
+                },
                 model: {
                     user: 'calo', pass: '123'
                 },
@@ -28,7 +31,7 @@
                             this.model.user = data.ok
                             if (data.ok === true) {
                                 // redirect('./main.html')
-                                this.navigate('/routea')
+                                this.navigate('/routeb')
                             }
                         }
                     })
