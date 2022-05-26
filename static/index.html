@@ -5,46 +5,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./js/utils.js?23"></script>
+    <script src="./js/utils.js?33"></script>
     <title>Login</title>
 </head>
 
 <body>
-    <div id="logo"></div>
     <div calo>
+        <div id="logo"></div>
         <input @model="user" type="text">
         <input @model="pass" type="text">
         <button @Click="login">login</button>
+        <script>
+            var calo = {
+                model: {
+                    user: 'calo', pass: '123'
+                },
+                login: function () {
+                    const payload = this.model
+                    this.ajax({
+                        url: '/api/health', data: payload, success: function (data) {
+                            console.log(data)
+                            this.model.user = data.ok
+                            if (data.ok === true) {
+                                // redirect('./main.html')
+                                this.navigate('/routea')
+                            }
+                        }
+                    })
+                }
+            }
+
+
+        </script>
+
     </div>
     <script>
-        var calo = {
-            model: {
-                user: 'calo', pass: '123'
-            },
-            login: function () {
-                const payload = this.model
-                this.ajax({
-                    url: '/api/health', data: payload, success: function (data) {
-                        console.log(data)
-                        this.model.user = data.ok
-                        if (data.ok === true) {
-                            redirect('./main.html')
-                        }
-                    }
-                })
-            }
-        }
-
-
-    </script>
-
-    <script>
-        loadScripts('./js/calo.js', './js/api.js', './js/caloplugins.js')
+        loadScripts('./js/calo.js', './js/spaExtension.js', './js/api.js', './js/caloplugins.js')
         whenready(function () {
             calo.makePlugin('logo', pluginLogo)
         })
 
     </script>
+
 </body>
 
 </html>

@@ -7,7 +7,7 @@
     for (const key in router) {
         if (Object.hasOwnProperty.call(router, key)) {
             const htmlName = router[key];
-            getHtmlOrJson('./views/' + htmlName, function (text) {
+            getHtmlOrJson('./templates/' + htmlName, function (text) {
                 templateStore[key] = encodeURI(text);
             })
         }
