@@ -2,9 +2,8 @@
 
     const root = o.rootel
     o.templateStore = {}
-    o.router = [
-        { '/routea': 'templateA.html' }
-    ]
+    o.router = o.router || { '/routea': 'templateA.html' }
+
     for (const key in router) {
         if (Object.hasOwnProperty.call(router, key)) {
             const htmlName = router[key];
