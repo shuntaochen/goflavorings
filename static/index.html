@@ -18,7 +18,9 @@
         <script>
             var calo = {
                 router: {
-                    '/routeb': 'templatec.html'
+                    '/routea': 'templatea.html',
+                    '/routeb': 'templateb.html',
+                    '/routec': 'templatec.html'
                 },
                 model: {
                     user: 'calo', pass: '123'
@@ -31,7 +33,7 @@
                             this.model.user = data.ok
                             if (data.ok === true) {
                                 // redirect('./main.html')
-                                this.navigate('/routeb')
+                                this.navigate('/routec')
                             }
                         }
                     })

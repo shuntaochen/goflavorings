@@ -1,14 +1,12 @@
 <div id="logo"></div>
+bbb
 <input @model="user" type="text">
 <input @model="pass" type="text">
 <button @Click="login">login</button>
 <script>
-    var calo = {
-        router: {
-            '/routeb': 'templatea.calo'
-        },
+    var calo = makeCalo({
         model: {
-            user: 'calo', pass: '123'
+            user: 'calo', pass: '456'
         },
         login: function () {
             const payload = this.model
@@ -23,7 +21,8 @@
                 }
             })
         }
-    }
+    })
+
 
     calo.makePlugin('logo', pluginLogo)
 

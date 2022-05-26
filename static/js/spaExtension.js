@@ -7,11 +7,17 @@
     o.router = o.router || { '/routea': 'templatea.html' }
     const router = o.router
     for (const key in router) {
+        var proms = []
         if (Object.hasOwnProperty.call(router, key)) {
-            const htmlName = router[key];
-            getHtmlOrJson('./templates/' + htmlName, function (text) {
-                templateStore[key] = encodeURI(text);
+            var p = new Promise(resolve => {
+                const htmlName = router[key];
+                getHtmlOrJson('./templates/' + htmlName, function (text) {
+                    templateStore[key] = encodeURI(text);
+                    resolve()
+                })
+
             })
+            proms.push(p)
         }
     }
 

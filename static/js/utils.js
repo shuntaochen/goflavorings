@@ -61,3 +61,9 @@ function require(file, callback) {
     // append and execute script
     document.documentElement.firstChild.appendChild(script);
 }
+
+function makeCalo(o) {
+    window.calo = { ...window.calo, ...o }
+    calo.run.apply(calo)
+    return window.calo
+}
