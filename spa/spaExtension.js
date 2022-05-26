@@ -14,7 +14,7 @@
     }
     o.navigate = function (route) {
         window.history.pushState(null, null, route)
-        rootel.innerHTML = templateStore[route]
+        root.innerHTML = templateStore[route]
         o.run.apply(o)
     }
     window.calo = o || {
