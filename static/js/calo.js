@@ -7,7 +7,7 @@ Privilege is hereby granted, free of use, this is an MVVM framework that I creat
 
 **/
 
-(function () {
+(function (o) {
     function doForCalo(data, scope, prefix, jsonPathPrefix) {
         for (const key in data) {
             if (Object.hasOwnProperty.call(data, key)) {
@@ -60,7 +60,7 @@ Privilege is hereby granted, free of use, this is an MVVM framework that I creat
 
     }
 
-    window.calo = window.calo || {
+    window.calo = o || {
         model: {}
     }
     window.log = x => console.log(x)
@@ -71,6 +71,7 @@ Privilege is hereby granted, free of use, this is an MVVM framework that I creat
         })
     }
     var root = document.querySelector("[calo]");
+    calo.rootel = root
     calo.run = function () {
         removePopped(root)
         doForCalo(calo.model, root, "", "calo.model")
@@ -216,6 +217,6 @@ Privilege is hereby granted, free of use, this is an MVVM framework that I creat
             }
         }
     }
-})()
+})(window.calo)
 
 
