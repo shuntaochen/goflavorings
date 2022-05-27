@@ -36,14 +36,12 @@
         } else {
             calo.query = ''
         }
-        if (root) {
-            root.innerHTML = ''
-            var hm = stringToHTML(decodeURI(templateStore[route]))
-            var script = hm.getElementsByTagName('script')[0].text;
-            root.appendChild(hm)
-            eval(script)
-            o.run.apply(o)
-        }
+        root.innerHTML = ''
+        var hm = stringToHTML(decodeURI(templateStore[route]))
+        var script = hm.getElementsByTagName('script')[0].text;
+        root.appendChild(hm)
+        eval(script)
+        o.run.apply(o)
     }
     window.calo = o || {
         model: {}

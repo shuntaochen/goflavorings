@@ -45,7 +45,9 @@
 
     </div>
     <script>
-        loadScripts('./js/calo.js', './js/spaExtension.js', './js/api.js', './js/caloplugins.js')
+        require('./js/calo.js', function () {
+            loadScripts('./js/spaExtension.js', './js/api.js', './js/caloplugins.js')
+        })
         whenready(function () {
             calo.makePlugin('logo', pluginLogo)
         })
