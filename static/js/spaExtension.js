@@ -6,12 +6,13 @@
     const templateStore = o.templateStore
     o.router = o.router || { '/routea': 'templatea.html' }
     const router = o.router
+    var proms = []
     for (const key in router) {
-        var proms = []
         if (Object.hasOwnProperty.call(router, key)) {
             var p = new Promise(resolve => {
                 const htmlName = router[key];
                 getHtmlOrJson('./templates/' + htmlName, function (text) {
+                    console.log(text)
                     templateStore[key] = encodeURI(text);
                     resolve()
                 })
@@ -27,7 +28,14 @@
         return doc.body;
     };
     o.navigate = function (route) {
-        window.history.pushState(null, null, route)
+        window.history.pushState({ route }, '', route)
+        if (route.indexOf('?') !== -1) {
+            const parts = route.split('?')
+            route = parts[0]
+            calo.query = parts[1]
+        } else {
+            calo.query = ''
+        }
         if (root) {
             root.innerHTML = ''
             var hm = stringToHTML(decodeURI(templateStore[route]))

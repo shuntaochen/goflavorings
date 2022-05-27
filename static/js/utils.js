@@ -23,7 +23,7 @@ function getHtmlOrJson(url, success) {
     }
 
     var request = makeHttpObject();
-    request.open("GET", url, true);
+    request.open("GET", url + "?" + new Date().getMilliseconds(), true);
     request.send(null);
     request.onreadystatechange = function () {
         if (request.readyState == 4) {
