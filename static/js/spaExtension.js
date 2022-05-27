@@ -30,11 +30,11 @@
     o.navigate = function (route) {
         window.history.pushState({ route }, '', route)
         if (route.indexOf('?') !== -1) {
+            calo.query = getQueryJson(route)
             const parts = route.split('?')
             route = parts[0]
-            calo.query = parts[1]
         } else {
-            calo.query = ''
+            calo.query = {}
         }
         root.innerHTML = ''
         var hm = stringToHTML(decodeURI(templateStore[route]))
@@ -42,6 +42,7 @@
         root.appendChild(hm)
         eval(script)
         o.run.apply(o)
+
     }
     window.calo = o || {
         model: {}

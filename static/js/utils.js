@@ -33,6 +33,16 @@ function getHtmlOrJson(url, success) {
     };
 }
 
+
+function getQueryJson(route) {
+    let arr = route.split("?")[1].split("&");
+    let queryJson = {};
+    for (let i of arr) {
+        queryJson[i.split("=")[0]] = i.split("=")[1];
+    }
+    return queryJson
+}
+
 function whenready(onload) {
     document.body.onload = onload
 }
