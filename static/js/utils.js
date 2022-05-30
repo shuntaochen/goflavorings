@@ -77,3 +77,35 @@ function makeCalo(o) {
     calo.run.apply(calo)
     return window.calo
 }
+
+
+function requireAll(scripts, next) {
+    let promises = [];
+    scripts.forEach(function (url) {
+        var loader = new Promise(function (resolve, reject) {
+            let script = document.createElement('script');
+            script.src = url;
+            script.async = false;
+            script.onload = function () {
+                resolve(url);
+            };
+            script.onerror = function () {
+                reject(url);
+            };
+            document.body.appendChild(script);
+        });
+        promises.push(loader);
+    });
+
+    return Promise.all(promises)
+        .then(function () {
+            console.log('all scripts loaded');
+            next()
+        }).catch(function (script) {
+            console.log(script + ' failed to load');
+        });
+}
+
+
+
+
