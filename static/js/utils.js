@@ -47,29 +47,35 @@ function whenready(onload) {
     document.body.onload = onload
 }
 
+//intended as a loaded scripts manager to avoid additional load of same file
+window.loadedScripts = [];
+
 
 function require(file, callback) {
-    // create script element
-    var script = document.createElement("script");
-    script.src = file;
-    // monitor script loading
-    // IE < 7, does not support onload
-    if (callback) {
-        script.onreadystatechange = function () {
-            if (script.readyState === "loaded" || script.readyState === "complete") {
-                // no need to be notified again
-                script.onreadystatechange = null;
-                // notify user
+    if (window.loadedScripts.indexOf(file) === -1) {
+        // create script element
+        var script = document.createElement("script");
+        script.src = file;
+        // monitor script loading
+        // IE < 7, does not support onload
+        if (callback) {
+            script.onreadystatechange = function () {
+                if (script.readyState === "loaded" || script.readyState === "complete") {
+                    // no need to be notified again
+                    script.onreadystatechange = null;
+                    window.loadedScripts.push(file)
+                    // notify user
+                    callback();
+                }
+            };
+            // other browsers
+            script.onload = function () {
                 callback();
-            }
-        };
-        // other browsers
-        script.onload = function () {
-            callback();
-        };
+            };
+        }
+        // append and execute script
+        document.documentElement.firstChild.appendChild(script);
     }
-    // append and execute script
-    document.documentElement.firstChild.appendChild(script);
 }
 
 function makeCalo(o) {
@@ -81,12 +87,13 @@ function makeCalo(o) {
 
 function requireAll(scripts, next) {
     let promises = [];
-    scripts.forEach(function (url) {
+    scripts.filter(s => window.loadedScripts.indexOf(url) === -1).forEach(function (url) {
         var loader = new Promise(function (resolve, reject) {
             let script = document.createElement('script');
             script.src = url;
             script.async = false;
             script.onload = function () {
+                window.loadedScripts.push(url)
                 resolve(url);
             };
             script.onerror = function () {
