@@ -87,7 +87,7 @@ function makeCalo(o) {
 
 function requireAll(scripts, next) {
     let promises = [];
-    scripts.filter(s => window.loadedScripts.indexOf(url) === -1).forEach(function (url) {
+    scripts.filter(s => window.loadedScripts.indexOf(s) === -1).forEach(function (url) {
         var loader = new Promise(function (resolve, reject) {
             let script = document.createElement('script');
             script.src = url;
