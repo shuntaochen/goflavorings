@@ -17,13 +17,7 @@ function pluginTree(container) {
     nodes.push({ id: 5, pid: 2, name: 'node5' })
     console.log(nodes);
     function doForCalo(node, nodes) {
-        var csh = ''
-        nodes.filter(n => { return n.pid == node.id }).forEach(
-            c => {
-                csh += `<li>${c.name}${doForCalo(c, nodes)}</li>`
-            }
-        )
-        return csh == '' ? '' : `<ul>${csh}</ul>`
+
     }
     let obj = doForCalo({ id: null }, nodes)
     container.innerHTML = obj
