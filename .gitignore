@@ -1,3 +1,2 @@
 jwtkey
-/static/js/caloplugins.js
-/static/js/calo.js
+/static/**/*.js
