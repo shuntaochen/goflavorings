@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/utils.js?23"></script>
+    <title>Main</title>
+</head>
+
+<body>
+    Hello main
+    <div calo>
+        <div id="tree"></div>
+    </div>
+    <script>
+        loadScripts('./js/calo.js', './js/api.js', './js/caloplugins.js')
+        whenready(function () {
+            calo.makePlugin('tree', pluginTree)
+        })
+
+    </script>
+</body>
+
+</html>
