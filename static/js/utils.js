@@ -113,8 +113,10 @@ function requireAll(scripts, next) {
         });
 }
 
+function dragger() {
+}
 
-const dragger = {
+dragger.prototype = {
     setSrc: function (el, clone) {
         this.src = el
         this.clone = clone
@@ -129,6 +131,7 @@ const dragger = {
         });
         return this
     }, setTargets: function () {
+        let $g = this
         for (var i of arguments) {
             i.addEventListener('dragenter', dragEnter);
             i.addEventListener('dragover', dragOver);
@@ -151,7 +154,7 @@ const dragger = {
         function drop() {
             console.log('drop')
             this.className = 'empty';
-            let el = dragger.clone ? dragger.src.cloneNode(true) : dragger.src
+            let el = $g.clone ? $g.src.cloneNode(true) : $g.src
             this.append(el)
         }
     },
