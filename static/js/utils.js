@@ -119,7 +119,7 @@ const dragger = {
         this.src = el
         this.clone = clone
         el.draggable = true
-        el.addEventListener('dragstart', function () {
+        el.addEventListener('dragstart', function (e) {
             setTimeout(() => {
                 console.log(this);
             }, 10)
