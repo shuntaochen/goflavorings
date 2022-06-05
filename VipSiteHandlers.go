@@ -20,8 +20,8 @@ func (h *VipSiteHandlers) Login(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *VipSiteHandlers) GetUsers(w http.ResponseWriter, r *http.Request) {
-	users := make([]domain.User, 0)
-	users = append(users, domain.User{IdentifiedNamedObject: domain.IdentifiedNamedObject{Id: 5, Name: "test"}})
-	users = append(users, domain.User{IdentifiedNamedObject: domain.IdentifiedNamedObject{Id: 6, Name: "guest"}})
+	users := []domain.User{}
+	users = append(users, domain.User{IdentifiedNamedObject: &domain.IdentifiedNamedObject{Id: 5, Name: "test"}})
+	users = append(users, domain.User{IdentifiedNamedObject: &domain.IdentifiedNamedObject{Id: 6, Name: "guest"}})
 	json.NewEncoder(w).Encode(users)
 }

@@ -17,7 +17,7 @@ type IdentifiedNamedObject struct {
 }
 
 type User struct {
-	IdentifiedNamedObject
+	*IdentifiedNamedObject
 	Password string
 	Email    string
 	Points   int
