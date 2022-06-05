@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <a @Link="/routeb">Go to routeb</a>
     <div calo>
         <div id="logo"></div>
         <input @model="user" type="text">
@@ -45,7 +46,7 @@
 
     </div>
     <script>
-        require('./js/calo.js', function () {
+        require('./js/calo.js?45', function () {
             loadScripts('./js/spaExtension.js', './js/api.js', './js/caloplugins.js')
         })
         whenready(function () {

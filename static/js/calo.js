@@ -77,6 +77,7 @@ Privilege is hereby granted, free of use, this is an MVVM framework that I creat
         doForCalo(calo.model, root, "", "calo.model")
         var clicks = root.querySelectorAll("[\\@Click]")
         var changes = root.querySelectorAll("[\\@Change]")
+        var links = document.querySelectorAll("[\\@Link]")
         clicks.forEach(c => {
             c.onclick = function () {
                 calo[c.getAttribute("@Click")].call(calo, c, c.value)
@@ -87,6 +88,16 @@ Privilege is hereby granted, free of use, this is an MVVM framework that I creat
             c.onchange = function () {
                 calo[c.getAttribute("@Change")].call(calo, c, c.value)
                 calo.run.apply(calo)
+            }
+        })
+
+        links.forEach(l => {
+            l.onclick = function (e) {
+                e.preventDefault();
+                if (calo.navigate) {
+                    var a = l.getAttribute("@Link")
+                    calo.navigate(a)
+                }
             }
         })
 
@@ -110,6 +121,7 @@ Privilege is hereby granted, free of use, this is an MVVM framework that I creat
                 ip.attachEvent('change', function () { log(5); });
             }
         })
+
 
     }
 
