@@ -84,6 +84,7 @@ func main() {
 		api("/channels"):    {vipSite.GetChannels, "get"},
 		api("/rules"):       {vipSite.GetRules, "get"},
 		api("/wishtickets"): {vipSite.GetWishTickets, "get"},
+		api("/visits"):      {vipSite.GetVisits, "get"},
 	}
 	for k := range routes {
 		router.HandleFunc(k, defh)

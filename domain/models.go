@@ -47,3 +47,8 @@ type WishTicket struct {
 	IdentifiedNamedObject
 	Content string
 }
+
+type Visit struct {
+	IdentifiedNamedObject
+	ChannelId int64
+}

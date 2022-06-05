@@ -67,3 +67,10 @@ func (h *VipSiteHandlers) GetWishTickets(w http.ResponseWriter, r *http.Request)
 	users = append(users, domain.WishTicket{IdentifiedNamedObject: domain.IdentifiedNamedObject{Id: 6, Name: "guest"}})
 	json.NewEncoder(w).Encode(users)
 }
+
+func (h *VipSiteHandlers) GetVisits(w http.ResponseWriter, r *http.Request) {
+	users := []domain.Visit{}
+	users = append(users, domain.Visit{IdentifiedNamedObject: domain.IdentifiedNamedObject{Id: 5, Name: "Visit"}})
+	users = append(users, domain.Visit{IdentifiedNamedObject: domain.IdentifiedNamedObject{Id: 6, Name: "guest"}})
+	json.NewEncoder(w).Encode(users)
+}
