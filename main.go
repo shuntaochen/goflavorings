@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -108,12 +107,6 @@ func defh(w http.ResponseWriter, r *http.Request) {
 func myfilter(v interface{}, w http.ResponseWriter, r *http.Request) func(w http.ResponseWriter, r *http.Request) {
 	//filter w,r
 	return v.(func(w http.ResponseWriter, r *http.Request))
-}
-
-func mylog(entries ...interface{}) {
-	for _, entry := range entries {
-		fmt.Println("Status:", entry)
-	}
 }
 
 func api(path string) string {
