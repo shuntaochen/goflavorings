@@ -12,6 +12,7 @@ type VipSiteHandlers struct {
 func (h *VipSiteHandlers) Login(w http.ResponseWriter, r *http.Request) {
 	var d *domain.User = new(domain.User)
 	mylog(d)
-
-	json.NewEncoder(w).Encode(map[string]bool{"ok": false})
+	d.Code = "hello world"
+	// json.NewEncoder(w).Encode(map[string]bool{"ok": false})
+	json.NewEncoder(w).Encode(d)
 }
