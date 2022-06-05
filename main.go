@@ -77,7 +77,10 @@ func main() {
 	})
 	vipSite := VipSiteHandlers{}
 
-	routes = map[string][]interface{}{api("/login"): {vipSite.Login, "get"}}
+	routes = map[string][]interface{}{
+		api("/login"): {vipSite.Login, "get"},
+		api("/users"): {vipSite.GetUsers, "get"},
+	}
 	for k := range routes {
 		router.HandleFunc(k, defh)
 	}
