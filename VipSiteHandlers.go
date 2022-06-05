@@ -2,15 +2,16 @@ package main
 
 import (
 	"encoding/json"
-	"net/http"
 	"flavorings/domain"
+	"net/http"
 )
 
 type VipSiteHandlers struct {
 }
 
 func (h *VipSiteHandlers) Login(w http.ResponseWriter, r *http.Request) {
-	domain.User d:=New()
-	
+	var d *domain.User = new(domain.User)
+	mylog(d)
+
 	json.NewEncoder(w).Encode(map[string]bool{"ok": false})
 }
