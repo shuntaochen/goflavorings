@@ -51,4 +51,6 @@ type WishTicket struct {
 type Visit struct {
 	IdentifiedNamedObject
 	ChannelId int64
+	IpAddress string
+	Mac       string
 }
