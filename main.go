@@ -106,6 +106,7 @@ func defh(w http.ResponseWriter, r *http.Request) {
 
 func myfilter(v interface{}, w http.ResponseWriter, r *http.Request) func(w http.ResponseWriter, r *http.Request) {
 	//filter w,r
+
 	return v.(func(w http.ResponseWriter, r *http.Request))
 }
 

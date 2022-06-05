@@ -18,3 +18,8 @@ func (h *VipSiteHandlers) Login(w http.ResponseWriter, r *http.Request) {
 	// json.NewEncoder(w).Encode(map[string]bool{"ok": false})
 	json.NewEncoder(w).Encode(d)
 }
+
+func (h *VipSiteHandlers) GetUsers(w http.ResponseWriter, r *http.Request) {
+	users := make([]domain.Game, 5)
+	json.NewEncoder(w).Encode(users)
+}
