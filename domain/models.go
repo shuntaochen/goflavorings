@@ -17,7 +17,7 @@ type IdentifiedNamedObject struct {
 }
 
 type User struct {
-	*IdentifiedNamedObject
+	IdentifiedNamedObject
 	Password string
 	Email    string
 	Points   int
@@ -39,7 +39,7 @@ type Channel struct {
 	IdentifiedNamedObject
 }
 
-type Rules struct {
+type Rule struct {
 	IdentifiedNamedObject
 }
 
