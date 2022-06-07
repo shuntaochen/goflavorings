@@ -11,12 +11,20 @@
 </head>
 
 <body>
-    Hello main
+    <div id="tree"></div>
     <div calo>
-        <div id="tree"></div>
+        Hello main
+
     </div>
     <script>
-        loadScripts('./js/calo.js', './js/api.js', './js/caloplugins.js')
+        var calo = {
+            router: {
+                '/routea': 'templatea.html',
+                '/routeb': 'templateb.html',
+                '/routec': 'templatec.html'
+            }
+        }
+        loadScripts('./js/calo.js', './js/spaExtension.js', './js/api.js', './js/caloplugins.js')
         whenready(function () {
             calo.makePlugin('tree', pluginTree)
 

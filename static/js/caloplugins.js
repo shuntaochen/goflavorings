@@ -4,6 +4,7 @@ function pluginLogo(el) {
 }
 
 function pluginTree(container) {
+    const calo = this
     var root = { id: 0, pid: null, name: 'root' }
     var nodes = [root, { id: 6, pid: null, name: 'root1' }]
     for (let index = 1; index < 5; index++) {
@@ -32,6 +33,7 @@ function pluginTree(container) {
         els[el].onclick = function (e) {
             e.preventDefault()
             e.stopPropagation()
+            calo.navigate('/routeb?id=' + 55)
             if (this.children[0])
                 this.children[0].style.display = this.children[0].style.display == 'none' ? '' : 'none';
         }
