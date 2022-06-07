@@ -24,11 +24,13 @@
                 '/routec': 'templatec.html'
             }
         }
-        loadScripts('./js/calo.js', './js/spaExtension.js', './js/api.js', './js/caloplugins.js')
         whenready(function () {
-            calo.makePlugin('tree', pluginTree)
+            requireAll(['./js/calo.js', './js/spaExtension.js', './js/api.js', './js/caloplugins.js'],
+                function () {
+                    calo.makePlugin('tree', pluginTree)
+                    console.log(window.screen.availHeight, "|", window.screen.height)
+                })
 
-            console.log(window.screen.availHeight, "|", window.screen.height)
         })
 
     </script>
