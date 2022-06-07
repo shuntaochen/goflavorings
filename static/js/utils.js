@@ -27,7 +27,6 @@ function getHtmlOrJson(url, success) {
     request.send(null);
     request.onreadystatechange = function () {
         if (request.readyState == 4) {
-            console.log(request.responseText);
             success(request.responseText)
         }
     };

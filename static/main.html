@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./js/utils.js?23"></script>
+    <link rel="stylesheet" href="./css.css" type="text/css" />
     <title>Main</title>
 </head>
 
@@ -18,6 +19,8 @@
         loadScripts('./js/calo.js', './js/api.js', './js/caloplugins.js')
         whenready(function () {
             calo.makePlugin('tree', pluginTree)
+
+            console.log(window.screen.availHeight, "|", window.screen.height)
         })
 
     </script>

@@ -1,6 +1,4 @@
 (function (o) {
-
-    console.log('elroot', o)
     const root = o.rootel
     o.templateStore = {}
     const templateStore = o.templateStore
@@ -12,7 +10,6 @@
             var p = new Promise(resolve => {
                 const htmlName = router[key];
                 getHtmlOrJson('./templates/' + htmlName, function (text) {
-                    console.log(text)
                     templateStore[key] = encodeURI(text);
                     resolve()
                 })
