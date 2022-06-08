@@ -19,3 +19,13 @@ ul li {
     padding: 30px;
     width: calc(100% - 350px);
 }
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.container>div {
+    display: block;
+}
