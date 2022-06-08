@@ -1,4 +1,5 @@
 (function (o) {
+    o.spaPath = o.spaPath || "./templates/"
     const root = o.rootel
     o.templateStore = {}
     const templateStore = o.templateStore
@@ -9,7 +10,7 @@
         if (Object.hasOwnProperty.call(router, key)) {
             var p = new Promise(resolve => {
                 const htmlName = router[key];
-                getHtmlOrJson('./templates/' + htmlName, function (text) {
+                getHtmlOrJson(o.spaPath + htmlName, function (text) {
                     templateStore[key] = encodeURI(text);
                     resolve()
                 })
