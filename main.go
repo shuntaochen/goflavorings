@@ -89,10 +89,10 @@ func main() {
 	for k := range routes {
 		router.HandleFunc(k, defh)
 	}
-	mylog("listening on 8000")
+	mylog("listening on 8005")
 	srv := &http.Server{
 		Handler: router,
-		Addr:    "127.0.0.1:8000",
+		Addr:    "0.0.0.0:8005", //"127.0.0.1:8005",
 		// Good practice: enforce timeouts for servers you create!
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
